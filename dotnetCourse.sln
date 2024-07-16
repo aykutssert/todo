@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetCourse", "dotnetCourse\dotnetCourse.csproj", "{9F9FB3CE-653D-4221-B215-3B225DA219E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetCourse", "dotnetCourse\dotnetCourse.csproj", "{9F9FB3CE-653D-4221-B215-3B225DA219E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetCourse.DataAccess", "dotnetCourse.DataAccess\dotnetCourse.DataAccess.csproj", "{3CB3248D-805F-443E-8D8A-E6D814302C1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetCourse.Models", "dotnetCourse.Models\dotnetCourse.Models.csproj", "{877A7BD3-BFE0-4EC0-93DA-287B992DA061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9F9FB3CE-653D-4221-B215-3B225DA219E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F9FB3CE-653D-4221-B215-3B225DA219E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F9FB3CE-653D-4221-B215-3B225DA219E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB3248D-805F-443E-8D8A-E6D814302C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB3248D-805F-443E-8D8A-E6D814302C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB3248D-805F-443E-8D8A-E6D814302C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB3248D-805F-443E-8D8A-E6D814302C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{877A7BD3-BFE0-4EC0-93DA-287B992DA061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{877A7BD3-BFE0-4EC0-93DA-287B992DA061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{877A7BD3-BFE0-4EC0-93DA-287B992DA061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{877A7BD3-BFE0-4EC0-93DA-287B992DA061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

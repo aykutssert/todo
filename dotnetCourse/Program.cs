@@ -1,7 +1,22 @@
+
+using dotnetCourse.DataAccess.Data;
+using dotnetCourse.DataAccess.Repository;
+using dotnetCourse.DataAccess.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var sqlServerString = builder.Configuration.GetConnectionString("SqlServerConnection");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(sqlServerString);
+});
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 var app = builder.Build();
 
@@ -20,8 +35,23 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+        name: "todo-index",
+        pattern: "todo/index/{id?}",
+        defaults: new { controller = "Todo", action = "Index" }
+    );
+
+app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+
+
+
+
+
+
+
 
 app.Run();

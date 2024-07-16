@@ -1,0 +1,36 @@
+﻿@model TodoAddVM
+
+<h2>New Task</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Add" method="post">
+
+    <div class="form-floating mb-3">
+        
+         <input asp-for="@Model.Todo.Description" class="form-control" type="text">
+        <label asp-for="@Model.Todo.Description">Description</label>
+       
+    </div>
+    <div class="form-floating mb-3">
+
+        
+        <select asp-for="@Model.Todo.CategoryId" class="form-select" asp-items="@Model.Categories">
+            <option value=""></option>
+        </select>
+        <label asp-for="@Model.Todo.CategoryId">Category</label>
+
+    </div>
+    <div class="form-floating mb-3">
+        <input type="date" asp-for="@Model.Todo.DueDate" class="form-control" />
+        <label asp-for="@Model.Todo.DueDate">Due Date:</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select asp-for="@Model.Todo.StatusId" class="form-select" asp-items="@Model.Statuses">
+            <option value=""></option>
+        </select>
+        <label asp-for="@Model.Todo.StatusId">Status:</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
