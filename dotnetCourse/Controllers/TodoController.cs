@@ -84,6 +84,7 @@ namespace dotnetCourse.Controllers
             todoIndexVM.TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             return View(todoIndexVM);
         }
+        
        
         [HttpGet]
         public IActionResult Upsert(int? id)
@@ -192,29 +193,21 @@ namespace dotnetCourse.Controllers
 
         }
         #region API CALLS
-
-
-
-
-        [Route("todo/delete/{id}")]
+        [Route("todo/delete/{id}/{filterId}")]
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, string filterId)
         {
-
-            
+            Console.WriteLine("filter:" + filterId);
             var toDelete = unitOfWork.TodoRepository.Get(i => i.Id == id);
             if (toDelete != null)
             {
-                
                 unitOfWork.TodoRepository.Remove(toDelete);
                 unitOfWork.Save();
-
             }
-
-            return Json(new { success = true, message = "Delete Successfull" });
-
-
+            TempData["success"] = "Delete successfully";
+            return Json(new { success = true, redirectUrl = Url.Action("Index", new { id = filterId }) });
         }
+
 
         #endregion
 

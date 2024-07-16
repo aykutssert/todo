@@ -23,8 +23,8 @@
 
     </div>
     <div class="form-floating mb-3">
-        <input type="date" asp-for="@Model.Todo.DueDate" class="form-control" />
-        <label asp-for="@Model.Todo.DueDate">Due Date:</label>
+        <input type="date" asp-for="Todo.DueDate" class="form-control" id="dueDateInput" />
+        <label asp-for="Todo.DueDate">Due Date:</label>
     </div>
     <div class="form-floating mb-3">
         <select asp-for="@Model.Todo.StatusId" class="form-select" asp-items="@Model.Statuses">
@@ -41,3 +41,9 @@
     
     <a asp-action="Index" class="btn btn-primary">Back</a>
 </form>
+<script>
+    // Input alanına tıklandığında tarih seçicisini aç
+    document.getElementById('dueDateInput').addEventListener('click', function () {
+        this.focus();
+    });
+</script>

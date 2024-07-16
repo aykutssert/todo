@@ -1,0 +1,55 @@
+﻿@model TodoIndexVM
+
+
+<form asp-action="MarkComplete" method="post" asp-route-id="@ViewBag.Filters.Filterstring">
+
+    <div id="todoTableContainer">
+        <table class="table table-bordered table-striped mt-2">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th class="w-25"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Todo task in Model.Todos)
+                {
+                    string overdue = task.OverDue ? "bg-warning" : "";
+                    <tr>
+                        <td>@task.Description</td>
+                        <td>@task.Category.CategoryName</td>
+                        <td class="@overdue">@task.DueDate?.ToShortDateString()</td>
+                        <td class="@overdue">@task.Status.StatusName</td>
+                        <td>
+                            @if (task.StatusId == "open")
+                            {
+
+                                <button type="submit" class="btn btn-success btn-sm" name="@nameof(Todo.Id)" value="@task.Id">Mark Completed</button>
+                                <a class="btn btn-primary btn-sm" asp-action="Upsert" asp-route-id="@task.Id">Update</a>
+                                <a class="btn btn-danger btn-sm" id ="deleteBtn" onclick="Delete(event, '/todo/delete/@task.Id/@ViewBag.Filters.Filterstring')">Delete</a>
+
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        
+    </div>
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+
+</form>
+<script src="~/js/delete.js"></script>
